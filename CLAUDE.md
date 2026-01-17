@@ -5,7 +5,7 @@ This repository is a Claude Code plugin marketplace that distributes the `native
 ## Repository Structure
 
 ```
-every-marketplace/
+native-marketplace/
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace catalog (lists available plugins)
 ├── docs/                         # Documentation site (GitHub Pages)
@@ -261,7 +261,7 @@ python -m http.server 8000
 1. Install the marketplace locally:
 
    ```bash
-   claude /plugin marketplace add /Users/yourusername/every-marketplace
+   claude /plugin marketplace add /Users/yourusername/native-marketplace
    ```
 
 2. Install the plugin:

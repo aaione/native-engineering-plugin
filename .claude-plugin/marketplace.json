@@ -1,7 +1,7 @@
 {
-  "name": "every-marketplace",
+  "name": "native-marketplace",
   "owner": {
-    "name": "Every Inc.",
+    "name": "native-marketplace",
     "url": "https://github.com/aaione"
   },
   "metadata": {
@@ -19,7 +19,15 @@
         "email": "kieran@every.to"
       },
       "homepage": "https://github.com/aaione/native-engineering-plugin",
-      "tags": ["ai-powered", "native-engineering", "workflow-automation", "code-review", "quality", "knowledge-management", "image-generation"],
+      "tags": [
+        "ai-powered",
+        "native-engineering",
+        "workflow-automation",
+        "code-review",
+        "quality",
+        "knowledge-management",
+        "image-generation"
+      ],
       "source": "./plugins/native-engineering"
     },
     {
@@ -30,7 +38,14 @@
         "name": "Nityesh Agarwal"
       },
       "homepage": "https://github.com/aaione/native-engineering-plugin",
-      "tags": ["coding", "programming", "tutorial", "learning", "spaced-repetition", "education"],
+      "tags": [
+        "coding",
+        "programming",
+        "tutorial",
+        "learning",
+        "spaced-repetition",
+        "education"
+      ],
       "source": "./plugins/coding-tutor"
     }
   ]
