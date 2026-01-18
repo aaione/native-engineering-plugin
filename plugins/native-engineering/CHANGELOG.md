@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **`compound-recall-researcher` agent** - Specialized researcher for institutional memory with template-driven reporting
   - **Recall Templates** - Standardized `recall-template.md` for consistent knowledge injection
   - **Automatic Indexing** - Optimized `scripts/index_solutions.py` with keyword extraction and vector-based search
+  - **Optimization: Flash Recall Mechanism**: Replaced static JSON indexing with dynamic on-demand scanning to eliminate Git conflicts in team environments.
+  - **Improved Collaboration**: Knowledge sedated in `docs/solutions/` is now immediately discoverable by all team members after `git pull`.
   - **Workflow Integration** - Deeply integrated into `/workflow:plan`, `/workflow:work` (error recovery), `/workflow:review` (pitfall checking), and `/deepen-plan` (memory lookup).
 
 ### Summary

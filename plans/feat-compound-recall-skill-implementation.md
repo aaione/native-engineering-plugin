@@ -1,5 +1,12 @@
 # feat: Compound Recall Skill 实现
 
+## 实施状态: ✅ 已完成
+
+> **实现变更说明**  
+> 原计划采用静态索引方案 (`knowledge-index.json`)，实际采用 **Flash Recall 动态扫描方案**。  
+> **变更原因**：避免 Git 冲突，实现零维护的即时知识召回。团队成员 `git pull` 后，新增的 solution 文档立即可被召回。  
+> **核心实现**：`recall_matcher.py` 实时扫描 `docs/solutions/*.md`，无需手动维护索引文件。
+
 ## 概述
 
 实现 compound 知识库的主动召回机制,使沉淀在 `docs/solutions/` 中的知识能够像 skill 一样被自动发现和应用,真正发挥知识复利效应。
@@ -7,7 +14,7 @@
 **当前状态**:
 - ✅ 强大的知识沉淀系统 (`/workflow:compound` 命令 + 6个并行子代理)
 - ✅ 三级知识分层 (L1文档 → L2模式 → L3 Skill)
-- ⚠️ L1层(docs/solutions/)缺少主动召回,是被动知识库
+- ✅ L1层(docs/solutions/) **主动召回已实现** (Flash Recall)
 
 **目标状态**:
 - ✅ 知识像 skill 一样自动召回
@@ -122,16 +129,16 @@ graph TB
 
 ### 功能需求
 
-- [ ] **Skill 创建**: 创建 `compound-recall` skill,包含 YAML frontmatter 和动态检索指令。
-- [ ] **索引自动化**: 实现 `scripts/index_solutions.py`,能自动从 `docs/solutions/` 提取 metadata。
-- [ ] **动态路由**: `compound-recall` 能根据索引文件正确定位到对应的物理文件路径。
-- [ ] **闭环集成**: 集成到 `compound-docs` skill,在生成文档后自动更新索引。
+- [x] **Skill 创建**: 创建 `compound-recall` skill,包含 YAML frontmatter 和动态检索指令。
+- [x] **动态扫描**: 实现 `scripts/recall_matcher.py`,能实时从 `docs/solutions/` 扫描和匹配 metadata。*(注：采用 Flash Recall 替代静态索引)*
+- [x] **动态路由**: `compound-recall` 能根据匹配结果正确定位到对应的物理文件路径。
+- [x] **闭环集成**: 无需手动更新索引，新文档 `git pull` 后立即可召回。
 
 ### 集成需求
 
-- [ ] **Planning 集成**: `/workflow:plan` 生成规划前自动调用 `compound-recall`。
-- [ ] **Work 集成**: `/workflow:work` 遇到报错或 Phase 2 执行前自动检查相关经验。
-- [ ] **Review 集成**: `/workflow:review` 审查时自动检查是否触犯过往已知 Pitfalls。
+- [x] **Planning 集成**: `/workflow:plan` 生成规划前自动调用 `compound-recall-researcher`。
+- [x] **Work 集成**: `/workflow:work` Phase 2 执行前主动预检 + 遇到报错时自动检查相关经验。
+- [x] **Review 集成**: `/workflow:review` 审查时自动调用 `compound-recall-researcher` 检查是否触犯过往已知 Pitfalls。
 
 ---
 

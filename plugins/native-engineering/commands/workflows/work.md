@@ -64,7 +64,14 @@ This command takes a work document (plan, specification, or todo file) and execu
 
 ### Phase 2: Execute
 
-1. **Task Execution Loop**
+1. **Pre-Task Knowledge Check (Proactive Recall)**
+   
+   Before diving into implementation, proactively check for relevant institutional knowledge:
+   - Task compound-recall-researcher(plan_summary_and_tech_stack)
+   - If relevant pitfalls found → inject into task context as **Mandatory Constraints**
+   - This prevents repeating past mistakes before they happen
+
+2. **Task Execution Loop**
 
    For each task in priority order:
 
@@ -79,7 +86,7 @@ This command takes a work document (plan, specification, or todo file) and execu
      - Mark task as completed
    ```
 
-2. **Follow Existing Patterns**
+3. **Follow Existing Patterns**
 
    - The plan should reference similar code - read those files first
    - Match naming conventions exactly
@@ -87,7 +94,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Follow project coding standards (see CLAUDE.md)
    - When in doubt, grep for similar implementations
 
-3. **Test Continuously**
+4. **Test Continuously**
 
    - Run relevant tests after each significant change
    - Don't wait until the end to test
@@ -95,7 +102,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix failures immediately
    - Add new tests for new functionality
 
-4. **Figma Design Sync** (if applicable)
+5. **Figma Design Sync** (if applicable)
 
    For UI work with Figma designs:
 
@@ -104,7 +111,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix visual differences identified
    - Repeat until implementation matches design
 
-5. **Track Progress**
+6. **Track Progress**
    - Keep TodoWrite updated as you complete tasks
    - Note any blockers or unexpected discoveries
    - Create new tasks if scope expands

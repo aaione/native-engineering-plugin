@@ -251,13 +251,9 @@ But **NEVER auto-promote**. User decides via decision menu (Option 2).
 
 When user selects Option 2 (Add to Required Reading), use the template from `assets/critical-pattern-template.md` to structure the pattern entry. Number it sequentially based on existing patterns in `docs/solutions/patterns/cora-critical-patterns.md`.
 
-### Step 8: Update Recall Index (Automatic)
+### Step 8: Knowledge Compounding (Automatic)
 
-After any documentation is created or updated, automatically trigger the index update for the recall system:
-
-```bash
-python3 plugins/native-engineering/skills/compound-recall/scripts/index_solutions.py
-```
+Since the project uses **Flash Recall**, any documentation created in `docs/solutions/` is immediately searchable and available for recall in future tasks. No indexing step is required.
 </step>
 
 </critical_sequence>

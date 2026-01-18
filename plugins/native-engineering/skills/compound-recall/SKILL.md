@@ -23,13 +23,19 @@ Identify these elements from the current task:
 2. **Error Signatures**: e.g., `Redis::TimeoutError`, `ActionController::ParameterMissing`.
 3. **Core Themes**: e.g., `caching`, `authentication`, `n+1`.
 
-### Step 2: Index Search (Triple-Pass)
-Read the index file: `plugins/native-engineering/skills/compound-recall/references/knowledge-index.json`.
+### Step 2: Dynamic Matcher Execution (Flash Recall)
+Run the flash recall matcher script to identify relevant past experiences:
+```bash
+python3 plugins/native-engineering/skills/compound-recall/scripts/recall_matcher.py --tags "[tags]" --errors "[errors]" --keywords "[keywords]"
+```
 
-**Perform Matching in order of priority:**
-1. **Pass 1: Error Match**: Check if any current error signatures exist in `error_index`.
-2. **Pass 2: Tag Intersection**: Check if current technology tags overlap with `tag_index`.
-3. **Pass 3: Keyword Search**: Check if core theme keywords exist in `keyword_index`.
+**Silent Skip Logic:**
+If `docs/solutions/` directory does NOT exist, skip the recall process silently.
+
+**Matching Weights:**
+1. **Error Match**: Highest priority (score 10).
+2. **Tag Intersection**: Medium priority (score 5).
+3. **Keyword Search**: Base priority (score 2).
 
 ### Step 3: Candidate Selection
 - Select the top 1-3 most relevant solutions.
@@ -44,12 +50,12 @@ Read the index file: `plugins/native-engineering/skills/compound-recall/referenc
 ---
 
 ## Fallback Strategy
-If no matches are found in the index:
-1. Try a general `grep -ri "keyword" docs/solutions/` to catch unindexed themes.
+If no matches are found by the recall matcher:
+1. Try a general `grep -ri "keyword" docs/solutions/` to catch documents with missing/incomplete frontmatter.
 2. If still nothing, proceed but remain alert for new compounding opportunities.
 
-## Maintenance
-The index is auto-updated by `compound-docs`. To manually rebuild:
-```bash
-python3 plugins/native-engineering/skills/compound-recall/scripts/index_solutions.py
-```
+## Maintenance (Flash Recall)
+**Zero maintenance required.** The `recall_matcher.py` script dynamically scans `docs/solutions/` at runtime.
+- New solution documents are immediately discoverable after `git pull`
+- No index files to rebuild or maintain
+- No Git conflicts from shared index files
