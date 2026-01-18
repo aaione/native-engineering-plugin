@@ -67,6 +67,7 @@ Run ALL or most of these agents at the same time:
 11. Task devops-harmony-analyst(PR content)
 12. Task data-integrity-guardian(PR content)
 13. Task agent-native-reviewer(PR content) - Verify new features are agent-accessible
+14. Task compound-recall-researcher(PR content) - Check against known pitfalls in project memory
 
 </parallel_tasks>
 

@@ -5,6 +5,23 @@ All notable changes to the native-engineering plugin will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.26.5] - 2026-01-18
+
+### Added
+
+- **Compound Recall System** - Active knowledge recall from `docs/solutions/`
+  - **`compound-recall` skill** - Dynamic indexing and retrieval of past solutions via Triple-Pass Search (Error -> Tag -> Keyword)
+  - **`compound-recall-researcher` agent** - Specialized researcher for institutional memory with template-driven reporting
+  - **Recall Templates** - Standardized `recall-template.md` for consistent knowledge injection
+  - **Automatic Indexing** - Optimized `scripts/index_solutions.py` with keyword extraction and vector-based search
+  - **Workflow Integration** - Deeply integrated into `/workflow:plan`, `/workflow:work` (error recovery), `/workflow:review` (pitfall checking), and `/deepen-plan` (memory lookup).
+
+### Summary
+
+- 28 agents, 23 commands, 15 skills, 1 MCP server
+
+---
+
 ## [2.26.4] - 2026-01-15
 
 ### Changed

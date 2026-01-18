@@ -250,6 +250,14 @@ But **NEVER auto-promote**. User decides via decision menu (Option 2).
 **Template for critical pattern addition:**
 
 When user selects Option 2 (Add to Required Reading), use the template from `assets/critical-pattern-template.md` to structure the pattern entry. Number it sequentially based on existing patterns in `docs/solutions/patterns/cora-critical-patterns.md`.
+
+### Step 8: Update Recall Index (Automatic)
+
+After any documentation is created or updated, automatically trigger the index update for the recall system:
+
+```bash
+python3 plugins/native-engineering/skills/compound-recall/scripts/index_solutions.py
+```
 </step>
 
 </critical_sequence>

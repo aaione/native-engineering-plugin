@@ -28,8 +28,9 @@ Do not proceed until you have a clear feature description from the user.
 First, I need to understand the project's conventions and existing patterns, leveraging all available resources and use paralel subagents to do this.
 </thinking>
 
-Runn these three agents in paralel at the same time:
+Run these four agents in paralel at the same time:
 
+- Task compound-recall-researcher(feature_description)
 - Task repo-research-analyst(feature_description)
 - Task best-practices-researcher(feature_description)
 - Task framework-docs-researcher(feature_description)

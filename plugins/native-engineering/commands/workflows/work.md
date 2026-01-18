@@ -91,6 +91,7 @@ This command takes a work document (plan, specification, or todo file) and execu
 
    - Run relevant tests after each significant change
    - Don't wait until the end to test
+   - **Handle Failures with Project Memory**: If a test fails or an error occurs, run the `compound-recall-researcher` agent with the error message to check for known pitfalls and solutions in `docs/solutions/`.
    - Fix failures immediately
    - Add new tests for new functionality
 

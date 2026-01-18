@@ -378,3 +378,9 @@ The initial marketplace.json included many custom fields (downloads, stars, rati
 - Plugin entries: `name`, `description`, `version`, `author`, `homepage`, `tags`, `source`
 
 **Learning:** Stick to the official spec. Custom fields may confuse users or break compatibility with future versions.
+
+### 2026-01-18: Introduced Compound Recall system
+
+Implemented `compound-recall` skill and `compound-recall-researcher` agent to achieve active knowledge recall. The system automatically indexes `docs/solutions/` and proactively surfaces lessons learned during planning and task execution.
+
+**Learning:** Institutional memory should be a dynamic asset, not just a static archive. By shifting from manual references to automated indexing of the solutions directory, we ensure that new knowledge is immediately discoverable across all workflows.
