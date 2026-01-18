@@ -15,7 +15,7 @@ argument-hint: "[PR number, GitHub URL, branch name, or latest]"
 ## Prerequisites
 
 <requirements>
-- Git repository with GitHub CLI (`gh`) installed and authenticated
+- Git repository (GitHub, GitLab, or other)
 - Clean main/master branch
 - Proper permissions to create worktrees and access the repository
 - For document reviews: Path to a markdown file or document
@@ -35,14 +35,16 @@ First, I need to determine the review target type and set up the code for analys
 
 <task_list>
 
-- [ ] Determine review type: PR number (numeric), GitHub URL, file path (.md), or empty (current branch)
+- [ ] Determine review type: PR/MR number, URL, file path, or empty (current branch)
 - [ ] Check current git branch
-- [ ] If ALREADY on the PR branch → proceed with analysis on current branch
+- [ ] If ALREADY on the feature branch → proceed with analysis on current branch
 - [ ] If DIFFERENT branch → offer to use worktree: "Use git-worktree skill for isolated Call `skill: git-worktree` with branch name
-- [ ] Fetch PR metadata using `gh pr view --json` for title, body, files, linked issues
+- [ ] **Fetch metadata**:
+  - If GitHub: Use `gh pr view --json`
+  - If GitLab/Other: Use `git log main..HEAD --oneline` to see commits, or just proceed with code diff
 - [ ] Set up language-specific analysis tools
 - [ ] Prepare security scanning environment
-- [ ] Make sure we are on the branch we are reviewing. Use gh pr checkout to switch to the branch or manually checkout the branch.
+- [ ] Make sure we are on the branch we are reviewing. Use `git checkout [branch]` (or `gh pr checkout` if using GitHub).
 
 Ensure that the code is ready for analysis (either in worktree or on current branch). ONLY then proceed to the next step.
 

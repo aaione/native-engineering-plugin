@@ -94,7 +94,16 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Follow project coding standards (see CLAUDE.md)
    - When in doubt, grep for similar implementations
 
-4. **Test Continuously**
+4. **Apply Framework Best Practices** (if applicable)
+
+   For React or Next.js projects, use the `vercel-react-best-practices` skill:
+   - Reference `skill:vercel-react-best-practices` during implementation
+   - Pay special attention to:
+     - **Async Patterns**: Eliminate waterfalls using `Promise.all`
+     - **Bundle Optimization**: Avoid barrel imports and use dynamic imports for heavy components
+     - **Server/Client split**: Follow Vercel's guidelines for server components vs client components
+
+5. **Test Continuously**
 
    - Run relevant tests after each significant change
    - Don't wait until the end to test
@@ -102,7 +111,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix failures immediately
    - Add new tests for new functionality
 
-5. **Figma Design Sync** (if applicable)
+6. **Figma Design Sync** (if applicable)
 
    For UI work with Figma designs:
 
@@ -111,7 +120,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix visual differences identified
    - Repeat until implementation matches design
 
-6. **Track Progress**
+7. **Track Progress**
    - Keep TodoWrite updated as you complete tasks
    - Note any blockers or unexpected discoveries
    - Create new tasks if scope expands
@@ -135,6 +144,7 @@ This command takes a work document (plan, specification, or todo file) and execu
 
    Use for complex, risky, or large changes:
 
+   - **vercel-react-best-practices-reviewer**: Audit React/Next.js code quality and performance
    - **code-simplicity-reviewer**: Check for unnecessary complexity
    - **kieran-rails-reviewer**: Verify Rails conventions (Rails projects)
    - **performance-oracle**: Check for performance issues
@@ -160,7 +170,14 @@ This command takes a work document (plan, specification, or todo file) and execu
 
 ### Phase 4: Ship It
 
-1. **Create Commit**
+<!--
+1. **Create Commit (Optional)**
+
+   **After reviews are complete and successful:**
+
+   Ask the user: **"Reviews passed. Ready to commit?"**
+   
+   If the user agrees to commit:
 
    ```bash
    git add .
@@ -179,8 +196,9 @@ This command takes a work document (plan, specification, or todo file) and execu
    EOF
    )"
    ```
+-->
 
-2. **Capture and Upload Screenshots for UI Changes** (REQUIRED for any UI work)
+1. **Capture and Upload Screenshots for UI Changes** (REQUIRED for any UI work)
 
    For **any** design changes, new views, or UI modifications, you MUST capture and upload screenshots:
 
@@ -212,7 +230,8 @@ This command takes a work document (plan, specification, or todo file) and execu
 
    **IMPORTANT**: Always include uploaded image URLs in PR description. This provides visual context for reviewers and documents the change.
 
-3. **Create Pull Request**
+<!--
+2. **Create Pull Request**
 
    ```bash
    git push -u origin feature-branch-name
@@ -241,10 +260,11 @@ This command takes a work document (plan, specification, or todo file) and execu
    EOF
    )"
    ```
+-->
 
-4. **Notify User**
+2. **Notify User**
    - Summarize what was completed
-   - Link to PR
+   - Link to PR (if created)
    - Note any follow-up work needed
    - Suggest next steps if applicable
 
@@ -292,11 +312,12 @@ Before creating PR, verify:
 - [ ] Tests pass (run `bin/rails test`)
 - [ ] Linting passes (use linting-agent)
 - [ ] Code follows existing patterns
+- [ ] React/Next.js best practices applied (using `vercel-react-best-practices`)
 - [ ] Figma designs match implementation (if applicable)
 - [ ] Before/after screenshots captured and uploaded (for UI changes)
-- [ ] Commit messages follow conventional format
-- [ ] PR description includes summary, testing notes, and screenshots
-- [ ] PR description includes Compound Engineered badge
+<!-- - [ ] Commit messages follow conventional format -->
+<!-- - [ ] PR description includes summary, testing notes, and screenshots -->
+<!-- - [ ] PR description includes Compound Engineered badge -->
 
 ## When to Use Reviewer Agents
 

@@ -424,11 +424,14 @@ When user selects "Create Issue", detect their project tracker from CLAUDE.md:
    - Or look for mentions of "GitHub Issues" or "Linear" in their workflow section
 
 2. **If GitHub:**
+   <!--
    ```bash
    # Extract title from plan filename (kebab-case to Title Case)
    # Read plan content for body
    gh issue create --title "feat: [Plan Title]" --body-file plans/<issue_title>.md
    ```
+   -->
+   (Skipped for GitLab/Private repos - Create issue manually)
 
 3. **If Linear:**
    ```bash
