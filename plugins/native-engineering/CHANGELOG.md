@@ -5,6 +5,23 @@ All notable changes to the native-engineering plugin will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.27.0] - 2026-01-19
+
+### Changed
+
+- **Localized Workflow Commands** - Updated descriptions in command definition files (`commands/workflows/*.md`) to Chinese.
+- **Documentation** - Updated component counts in README.
+
+### Removed
+
+- **`rclone` skill** - Removed as it is not required for internal workflows.
+
+### Summary
+
+- 27 agents, 20 commands, 13 skills, 1 MCP server
+
+---
+
 ## [2.26.5] - 2026-01-18
 
 ### Added

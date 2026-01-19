@@ -1,6 +1,6 @@
 ---
 name: workflow:review
-description: Perform exhaustive code reviews using multi-agent analysis, ultra-thinking, and worktrees
+description: 使用多智能体分析、深度思考和工作树进行全面的代码审查
 argument-hint: "[PR number, GitHub URL, branch name, or latest]"
 ---
 

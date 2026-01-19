@@ -8,7 +8,7 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 |-----------|-------|
 | Agents | 27 |
 | Commands | 20 |
-| Skills | 14 |
+| Skills | 13 |
 | MCP Servers | 1 |
 
 ## Agents
@@ -127,12 +127,6 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 | `every-style-editor` | Review copy for Every's style guide compliance |
 | `file-todos` | File-based todo tracking system |
 | `git-worktree` | Manage Git worktrees for parallel development |
-
-### File Transfer
-
-| Skill | Description |
-|-------|-------------|
-| `rclone` | Upload files to S3, Cloudflare R2, Backblaze B2, and cloud storage |
 
 ### Browser Automation
 

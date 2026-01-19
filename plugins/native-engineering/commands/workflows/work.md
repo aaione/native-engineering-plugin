@@ -1,6 +1,6 @@
 ---
 name: workflow:work
-description: Execute work plans efficiently while maintaining quality and finishing features
+description: 高效执行工作计划，同时保持质量并完成功能交付
 argument-hint: "[plan file, specification, or todo file path]"
 ---
 

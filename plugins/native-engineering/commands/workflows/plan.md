@@ -1,6 +1,6 @@
 ---
 name: workflow:plan
-description: Transform feature descriptions into well-structured project plans following conventions
+description: 将功能描述转换为遵循项目规范的结构化计划
 argument-hint: "[feature description, bug report, or improvement idea]"
 ---
 
