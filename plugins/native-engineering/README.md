@@ -6,9 +6,9 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 
 | Component | Count |
 |-----------|-------|
-| Agents | 28 |
+| Agents | 29 |
 | Commands | 25 |
-| Skills | 29 |
+| Skills | 32 |
 | MCP Servers | 1 |
 
 ## Agents
@@ -34,7 +34,7 @@ Agents are organized into categories for easier discovery.
 | `security-sentinel` | Security audits and vulnerability assessments |
 | `julik-frontend-races-reviewer` | Review JavaScript/Stimulus code for race conditions |
 
-### Research (5)
+### Research (6)
 
 | Agent | Description |
 |-------|-------------|
@@ -42,6 +42,7 @@ Agents are organized into categories for easier discovery.
 | `compound-recall-researcher` | Retrieve and apply institutional knowledge from past project experiences |
 | `framework-docs-researcher` | Research framework documentation and best practices |
 | `git-history-analyzer` | Analyze git history and code evolution |
+| `learnings-researcher` | Grep-based institutional knowledge researcher (alternative to compound-recall) |
 | `repo-research-analyst` | Research repository structure and conventions |
 
 ### Design (3)
@@ -76,9 +77,9 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 
 | Command | Description |
 |---------|-------------|
+| `/workflow:brainstorm` | Explore requirements and approaches before planning |
 | `/workflow:plan` | Create implementation plans |
 | `/workflow:review` | Run comprehensive code reviews |
-| `/workflow:review-v2` | Minimalist code review using Agent-Native principles |
 | `/workflow:work` | Execute work items systematically |
 | `/workflow:compound` | Document solved problems to compound team knowledge |
 
@@ -150,9 +151,11 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 
 | Skill | Description |
 |-------|-------------|
+| `brainstorming` | Pre-implementation exploration for clarifying requirements |
 | `every-style-editor` | Review copy for Every's style guide compliance |
 | `file-todos` | File-based todo tracking system |
 | `git-worktree` | Manage Git worktrees for parallel development |
+| `rclone` | Cloud storage upload (S3, Cloudflare R2, Backblaze B2, etc.) |
 
 ### React & Frontend
 

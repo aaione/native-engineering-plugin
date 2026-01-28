@@ -5,6 +5,17 @@ All notable changes to the native-engineering plugin will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.31.0] - 2026-01-28
+
+### Fixed
+
+- **Component Counts** - Synchronized component counts across all metadata files:
+  - plugin.json: Updated to 29 agents, 25 commands, 32 skills
+  - marketplace.json: Updated to 29 agents, 25 commands, 32 skills
+  - README.md: Verified counts match actual files
+
+---
+
 ## [2.30.1] - 2026-01-28
 
 ### Fixed

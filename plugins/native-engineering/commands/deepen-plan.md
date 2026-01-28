@@ -8,7 +8,7 @@ argument-hint: "[path to plan file]"
 
 ## Introduction
 
-**Note: The current year is 2025.** Use this when searching for recent documentation and best practices.
+**Note: The current year is 2026.** Use this when searching for recent documentation and best practices.
 
 This command takes an existing plan (from `/workflow:plan`) and enhances each section with parallel research agents. Each major element gets its own dedicated research sub-agent to find:
 - Best practices and industry patterns
@@ -24,8 +24,8 @@ The result is a deeply grounded, production-ready plan with concrete implementat
 <plan_path> #$ARGUMENTS </plan_path>
 
 **If the plan path above is empty:**
-1. Check for recent plans: `ls -la plans/`
-2. Ask the user: "Which plan would you like to deepen? Please provide the path (e.g., `plans/my-feature.md`)."
+1. Check for recent plans: `ls -la docs/plans/`
+2. Ask the user: "Which plan would you like to deepen? Please provide the path (e.g., `docs/plans/2026-01-15-feat-my-feature-plan.md`)."
 
 Do not proceed until you have a valid plan file path.
 
@@ -142,28 +142,128 @@ Task general-purpose: "Use the security-patterns skill at ~/.claude/skills/secur
 
 **No limit on skill sub-agents. Spawn one for every skill that could possibly be relevant.**
 
-### 3. Discover and Apply Learnings/Solutions (Institutional Memory)
+### 3. Discover and Apply Learnings/Solutions
 
 <thinking>
-Check for documented learnings from /workflow:compound as institutional memory. Use the specialized `compound-recall-researcher` to browse project history efficiently.
+Check for documented learnings from /workflow:compound. These are solved problems stored as markdown files. Spawn a sub-agent for each learning to check if it's relevant.
 </thinking>
 
-**Step 1: Consult Project Memory**
-
-Launch the specialized researcher to analyze the plan against documented solutions:
+**LEARNINGS LOCATION - Check these exact folders:**
 
 ```
-Task compound-recall-researcher: "Analyze the following plan against our project's solutions history in docs/solutions/. 
-Find relevant pitfalls, precautions, and proven patterns that should be incorporated into this plan.
-Full Plan Content: [full plan content]"
+docs/solutions/           <-- PRIMARY: Project-level learnings (created by /workflow:compound)
+├── performance-issues/
+│   └── *.md
+├── debugging-patterns/
+│   └── *.md
+├── configuration-fixes/
+│   └── *.md
+├── integration-issues/
+│   └── *.md
+├── deployment-issues/
+│   └── *.md
+└── [other-categories]/
+    └── *.md
 ```
 
-**Step 2: Apply Recall Findings**
+**Step 1: Find ALL learning markdown files**
 
-- [ ] Review the findings for relevant pitfalls and precautions
-- [ ] Incorporate identified lessons into the appropriate plan sections
-- [ ] Use direct references to `docs/solutions/` files
-- [ ] Ensure any "Critical Patterns" identified are added as mandatory tasks in the plan
+Run these commands to get every learning file:
+
+```bash
+# PRIMARY LOCATION - Project learnings
+find docs/solutions -name "*.md" -type f 2>/dev/null
+
+# If docs/solutions doesn't exist, check alternate locations:
+find .claude/docs -name "*.md" -type f 2>/dev/null
+find ~/.claude/docs -name "*.md" -type f 2>/dev/null
+```
+
+**Step 2: Read frontmatter of each learning to filter**
+
+Each learning file has YAML frontmatter with metadata. Read the first ~20 lines of each file to get:
+
+```yaml
+---
+title: "N+1 Query Fix for Briefs"
+category: performance-issues
+tags: [activerecord, n-plus-one, includes, eager-loading]
+module: Briefs
+symptom: "Slow page load, multiple queries in logs"
+root_cause: "Missing includes on association"
+---
+```
+
+**For each .md file, quickly scan its frontmatter:**
+
+```bash
+# Read first 20 lines of each learning (frontmatter + summary)
+head -20 docs/solutions/**/*.md
+```
+
+**Step 3: Filter - only spawn sub-agents for LIKELY relevant learnings**
+
+Compare each learning's frontmatter against the plan:
+- `tags:` - Do any tags match technologies/patterns in the plan?
+- `category:` - Is this category relevant? (e.g., skip deployment-issues if plan is UI-only)
+- `module:` - Does the plan touch this module?
+- `symptom:` / `root_cause:` - Could this problem occur with the plan?
+
+**SKIP learnings that are clearly not applicable:**
+- Plan is frontend-only → skip `database-migrations/` learnings
+- Plan is Python → skip `rails-specific/` learnings
+- Plan has no auth → skip `authentication-issues/` learnings
+
+**SPAWN sub-agents for learnings that MIGHT apply:**
+- Any tag overlap with plan technologies
+- Same category as plan domain
+- Similar patterns or concerns
+
+**Step 4: Spawn sub-agents for filtered learnings**
+
+For each learning that passes the filter:
+
+```
+Task general-purpose: "
+LEARNING FILE: [full path to .md file]
+
+1. Read this learning file completely
+2. This learning documents a previously solved problem
+
+Check if this learning applies to this plan:
+
+---
+[full plan content]
+---
+
+If relevant:
+- Explain specifically how it applies
+- Quote the key insight or solution
+- Suggest where/how to incorporate it
+
+If NOT relevant after deeper analysis:
+- Say 'Not applicable: [reason]'
+"
+```
+
+**Example filtering:**
+```
+# Found 15 learning files, plan is about "Rails API caching"
+
+# SPAWN (likely relevant):
+docs/solutions/performance-issues/n-plus-one-queries.md      # tags: [activerecord] ✓
+docs/solutions/performance-issues/redis-cache-stampede.md    # tags: [caching, redis] ✓
+docs/solutions/configuration-fixes/redis-connection-pool.md  # tags: [redis] ✓
+
+# SKIP (clearly not applicable):
+docs/solutions/deployment-issues/heroku-memory-quota.md      # not about caching
+docs/solutions/frontend-issues/stimulus-race-condition.md    # plan is API, not frontend
+docs/solutions/authentication-issues/jwt-expiry.md           # plan has no auth
+```
+
+**Spawn sub-agents in PARALLEL for all filtered learnings.**
+
+**These learnings are institutional knowledge - applying them prevents repeating past mistakes.**
 
 ### 4. Launch Per-Section Research Agents
 
@@ -193,7 +293,7 @@ mcp__plugin_native-engineering_context7__query-docs: Query documentation for spe
 
 **Use WebSearch for current best practices:**
 
-Search for recent (2024-2025) articles, blog posts, and documentation on topics in the plan.
+Search for recent (2024-2026) articles, blog posts, and documentation on topics in the plan.
 
 ### 5. Discover and Run ALL Review Agents
 
@@ -360,7 +460,7 @@ At the top of the plan, add a summary section:
 
 ## Output Format
 
-Update the plan file in place (or create `plans/<original-name>-deepened.md` if requested).
+Update the plan file in place (or if user requests a separate file, append `-deepened` after `-plan`, e.g., `2026-01-15-feat-auth-plan-deepened.md`).
 
 ## Quality Checks
 
