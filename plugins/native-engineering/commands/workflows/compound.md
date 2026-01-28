@@ -109,6 +109,7 @@ This command launches multiple specialized subagents IN PARALLEL to maximize eff
 - ui-bugs/
 - integration-issues/
 - logic-errors/
+- context-issues/ (NEW: context-related issues, such as Lost-in-Middle, Context Poisoning, etc.)
 
 ## Success Output
 

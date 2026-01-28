@@ -5,6 +5,77 @@ All notable changes to the native-engineering plugin will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.30.1] - 2026-01-28
+
+### Fixed
+
+- **Skill Organization** - Relocated `context-engineering-collection` skill to proper directory structure following project conventions (`skills/context-engineering-collection/SKILL.md`)
+
+---
+
+## [2.30.0] - 2026-01-28
+
+### Added
+
+**14 New Context Engineering Skills** - Fully integrated from Agent-Skills-for-Context-Engineering as built-in skills (no external dependencies):
+
+- **Core Framework** (`context-fundamentals`, `context-degradation`, `context-optimization`, `context-compression`)
+- **Architecture** (`filesystem-context`, `memory-systems`, `multi-agent-patterns`, `tool-design`, `hosted-agents`)
+- **Development** (`project-development`, `evaluation`)
+- **Advanced** (`advanced-evaluation`, `bdi-mental-states`)
+- **Navigation** (`context-engineering-collection` - skill collection overview and learning paths)
+
+**Workflow Integration** - Enhanced core workflows with context engineering execution triggers:
+- `/workflow:work` - Context health monitoring, position sensitivity guidance, compression triggers
+- `/workflow:review` - Enhanced compound-recall-researcher with Context Clash detection
+- `/workflow:compound` - Added `context-issues/` category for documenting context-related problems
+- `/context-health` - Built-in context degradation diagnostic command
+
+### Changed
+
+- **Removed External Dependencies** - All context engineering capabilities are now built-in
+- **Updated Documentation** - `docs/architecture/README.md` reflects built-in context engineering skills
+
+### Summary
+
+- 28 agents, 25 commands, 29 skills (complete context-engineering framework integrated), 1 MCP server
+
+---
+
+## [2.29.0] - 2026-01-22
+
+### Added
+
+- **New Skills from Agent-Skills-for-Context-Engineering**:
+  - `web-design-guidelines` - Review UI code for Web Interface Guidelines compliance (fetches latest guidelines from Vercel)
+  - Added `react-best-practices` to README documentation (45+ rules for React/Next.js performance optimization)
+
+### Summary
+
+- 27 agents, 21 commands, 26 skills, 1 MCP server
+
+---
+
+## [2.28.0] - 2026-01-21
+
+### Added
+
+- **New Advanced Skills** - Integrated 6 high-level skills from the Context Engineering Marketplace:
+  - `advanced-evaluation` - Robust testing for agent reasoning
+  - `bdi-mental-states` - Intentional agent design (Belief, Desire, Intention)
+  - `evaluation` - Systematic benchmarking for LLM outputs
+  - `hosted-agents` - Design for agents running in persistent environments
+  - `memory-systems` - Advanced state management (Scratchpad/Summary/JSONL)
+  - `tool-design` - High-fidelity tool contract engineering
+- **Workflow: Review V2** - Minimalist, outcome-oriented code review workflow (`review-v2.md`)
+- **Session Tracking** - Introduced `JSONL` session tracking pattern to documentation/workflows
+
+### Summary
+
+- 27 agents, 21 commands, 24 skills, 1 MCP server
+
+---
+
 ## [2.27.1] - 2026-01-19
 
 ### Fixed

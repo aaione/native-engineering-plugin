@@ -71,7 +71,40 @@ This command takes a work document (plan, specification, or todo file) and execu
    - If relevant pitfalls found → inject into task context as **Mandatory Constraints**
    - This prevents repeating past mistakes before they happen
 
-2. **Task Execution Loop**
+2. **Context Health Best Practices**
+
+   Native Engineering Plugin includes built-in context engineering capabilities. Apply these principles during execution:
+
+   **Position Sensitivity** (Lost-in-Middle mitigation - `context-degradation` built-in skill):
+   - Place task goals and key constraints at the **beginning** of messages (high attention area)
+   - Place expected output format and acceptance criteria at the **end** (high attention area)
+   - Avoid accumulating large amounts of irrelevant information in the middle (attention drops 10-40% in middle)
+
+   **Tool Output Management** (Context Distraction mitigation - `context-optimization` built-in skill):
+   - When tool output > 2000 tokens, consider writing to `scratch/` directory (Observation Masking strategy)
+   - Return summary and file reference instead of full content
+   - Use `grep` or `read_file` to access details on demand
+
+   **Degradation Signal Monitoring**:
+   | Symptom | Possible Cause | Built-in Skill | Suggested Action |
+   |---------|---------------|----------------|------------------|
+   | Agent repeats same error | Context Poisoning | `context-degradation` | Explicitly correct or run `/context-health` |
+   | Agent responds off-topic | Context Distraction | `context-degradation` | Remove irrelevant context |
+   | Agent outputs contradictory conclusions | Context Clash | `context-degradation` | Mark conflict, determine priority |
+   | Agent forgets key information | Lost-in-Middle | `context-degradation` | Re-state, place at beginning |
+
+   **Context Compression Trigger Conditions** (`context-compression` built-in skill):
+   - Conversation rounds > 30
+   - Cumulative tool output > 50000 tokens
+   - User requests or degradation symptoms detected
+
+   **Execution Timing**:
+   - Before task start: Run `compound-recall-researcher` to retrieve relevant knowledge (Select strategy)
+   - During execution: Apply position sensitivity and tool output management principles
+   - When symptoms detected: Run `/context-health` for quick diagnosis
+   - For long conversations: Apply Compaction strategy to compress context
+
+3. **Task Execution Loop**
 
    For each task in priority order:
 
@@ -86,7 +119,7 @@ This command takes a work document (plan, specification, or todo file) and execu
      - Mark task as completed
    ```
 
-3. **Follow Existing Patterns**
+4. **Follow Existing Patterns**
 
    - The plan should reference similar code - read those files first
    - Match naming conventions exactly
@@ -94,7 +127,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Follow project coding standards (see CLAUDE.md)
    - When in doubt, grep for similar implementations
 
-4. **Apply Framework Best Practices** (if applicable)
+5. **Apply Framework Best Practices** (if applicable)
 
    For React or Next.js projects, use the `vercel-react-best-practices` skill:
    - Reference `skill:vercel-react-best-practices` during implementation
@@ -103,7 +136,7 @@ This command takes a work document (plan, specification, or todo file) and execu
      - **Bundle Optimization**: Avoid barrel imports and use dynamic imports for heavy components
      - **Server/Client split**: Follow Vercel's guidelines for server components vs client components
 
-5. **Test Continuously**
+6. **Test Continuously**
 
    - Run relevant tests after each significant change
    - Don't wait until the end to test
@@ -111,7 +144,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix failures immediately
    - Add new tests for new functionality
 
-6. **Figma Design Sync** (if applicable)
+7. **Figma Design Sync** (if applicable)
 
    For UI work with Figma designs:
 
@@ -120,7 +153,7 @@ This command takes a work document (plan, specification, or todo file) and execu
    - Fix visual differences identified
    - Repeat until implementation matches design
 
-7. **Track Progress**
+8. **Track Progress**
    - Keep TodoWrite updated as you complete tasks
    - Note any blockers or unexpected discoveries
    - Create new tasks if scope expands

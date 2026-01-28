@@ -439,6 +439,83 @@ Native Engineering Plugin 展示了一种新的软件开发范式：
 
 ---
 
+## 上下文工程原则
+
+本章节描述 Native Engineering Plugin 如何应用上下文工程原则。
+
+### 内置技能
+
+Native Engineering Plugin **内置**完整的上下文工程技能集，无需安装外部依赖：
+
+**内置技能**：
+| 技能 | 用途 |
+|------|------|
+| `context-degradation` | 四种退化模式详解 |
+| `context-optimization` | WSCI四桶策略 |
+| `context-compression` | 压缩策略 |
+| `context-fundamentals` | 上下文基础理论 |
+| `filesystem-context` | 文件系统上下文模式 |
+| `memory-systems` | 记忆系统 |
+| `multi-agent-patterns` | 多智能体模式 |
+| `tool-design` | 工具设计 |
+| `project-development` | 项目开发 |
+| `hosted-agents` | 托管智能体 |
+| `advanced-evaluation` | 高级评估 |
+| `evaluation` | 评估框架 |
+| `bdi-mental-states` | BDI心智状态 |
+
+### 四种上下文退化模式（概要）
+
+详细内容参见 `context-degradation` 内置技能，这里仅列出与 Native Engineering 的关联：
+
+| 退化模式 | Native Engineering 应对 |
+|----------|------------------------|
+| **Lost-in-Middle** | `/workflow:plan` 将目标放开头，验收标准放结尾；Compound Recall 在任务开始注入知识 |
+| **Context Poisoning** | `/workflow:compound` 记录正确解决方案；优先检索 docs/solutions/ |
+| **Context Distraction** | 渐进式披露（SKILL.md<500行）；并行agents隔离关注点 |
+| **Context Clash** | Flash Recall 使用时间戳优先最新方案；compound-recall-researcher 检测冲突 |
+
+### WSCI策略与Native Engineering映射
+
+详细内容参见 `context-optimization` 内置技能：
+
+| 策略 | Native Engineering 实现 |
+|------|------------------------|
+| **Write** | `docs/solutions/`, `plans/`, `scratch/` |
+| **Select** | Compound Recall + Flash Recall |
+| **Compress** | 使用 `/context-health` 指导，或长对话时自动触发 |
+| **Isolate** | 27个并行agents |
+
+### Token预算（快速参考）
+
+| 阈值 | 动作 |
+|------|------|
+| 70% | 警告，考虑优化 |
+| 80% | 触发压缩或卸载 |
+| 90% | 激进压缩，重启上下文 |
+
+详细Token分配指南参见 `context-optimization` 内置技能。
+
+### 位置敏感性最佳实践
+
+```markdown
+[任务目标和关键约束]        ← 开头（高注意力）
+[详细上下文]                ← 中间（注意力下降）
+[验收标准/期望格式]          ← 结尾（高注意力）
+```
+
+### 诊断与缓解
+
+使用 `/context-health` 命令进行上下文健康诊断，该命令使用内置的 `context-degradation` 和 `context-optimization` 技能。
+
+### 工具输出管理
+
+大型工具输出（>2000 tokens）应卸载到 `scratch/` 目录。详见：
+- `plugins/native-engineering/skills/compound-recall/assets/output-offload-template.md`
+- `plugins/native-engineering/skills/filesystem-context/` 内置技能
+
+---
+
 ## 查看架构图
 
 所有架构图都是Excalidraw格式，可以：

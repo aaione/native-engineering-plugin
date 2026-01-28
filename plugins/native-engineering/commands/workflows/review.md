@@ -69,7 +69,7 @@ Run ALL or most of these agents at the same time:
 11. Task devops-harmony-analyst(PR content)
 12. Task data-integrity-guardian(PR content)
 13. Task agent-native-reviewer(PR content) - Verify new features are agent-accessible
-14. Task compound-recall-researcher(PR content) - Check against known pitfalls in project memory
+14. Task compound-recall-researcher(PR content) - Check against known pitfalls in project memory. **Using `context-degradation` built-in skill**, detect Context Clash (conflicting information between PR and existing solutions), flag if PR introduces patterns contradicting docs/solutions/. This prevents Context Clash by identifying contradictions between new code and documented solutions.
 
 </parallel_tasks>
 

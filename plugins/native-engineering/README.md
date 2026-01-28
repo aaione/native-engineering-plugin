@@ -6,9 +6,9 @@ AI-powered development tools that get smarter with every use. Make each unit of 
 
 | Component | Count |
 |-----------|-------|
-| Agents | 27 |
-| Commands | 20 |
-| Skills | 13 |
+| Agents | 28 |
+| Commands | 25 |
+| Skills | 29 |
 | MCP Servers | 1 |
 
 ## Agents
@@ -34,11 +34,12 @@ Agents are organized into categories for easier discovery.
 | `security-sentinel` | Security audits and vulnerability assessments |
 | `julik-frontend-races-reviewer` | Review JavaScript/Stimulus code for race conditions |
 
-### Research (4)
+### Research (5)
 
 | Agent | Description |
 |-------|-------------|
 | `best-practices-researcher` | Gather external best practices and examples |
+| `compound-recall-researcher` | Retrieve and apply institutional knowledge from past project experiences |
 | `framework-docs-researcher` | Research framework documentation and best practices |
 | `git-history-analyzer` | Analyze git history and code evolution |
 | `repo-research-analyst` | Research repository structure and conventions |
@@ -77,6 +78,7 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 |---------|-------------|
 | `/workflow:plan` | Create implementation plans |
 | `/workflow:review` | Run comprehensive code reviews |
+| `/workflow:review-v2` | Minimalist code review using Agent-Native principles |
 | `/workflow:work` | Execute work items systematically |
 | `/workflow:compound` | Document solved problems to compound team knowledge |
 
@@ -99,6 +101,11 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 | `/test-browser` | Run browser tests on PR-affected pages |
 | `/xcode-test` | Build and test iOS apps on simulator |
 | `/feature-video` | Record video walkthroughs and add to PR description |
+| `/context-health` | Diagnose context degradation symptoms and get remediation advice |
+| `/agent-native-audit` | Run comprehensive agent-native architecture review with scored principles |
+| `/deploy-docs` | Validate and prepare documentation for GitHub Pages deployment |
+| `/lfg` | Full autonomous engineering workflow |
+| `/release-docs` | Build and update the documentation site with current plugin components |
 
 ## Skills
 
@@ -107,6 +114,25 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 | Skill | Description |
 |-------|-------------|
 | `agent-native-architecture` | Build AI agents using prompt-native architecture |
+| `hosted-agents` | Designing agents for persistent, high-uptime environments |
+| `bdi-mental-states` | Modeling agent behavior via Belief-Desire-Intention concepts |
+| `multi-agent-patterns` | Coordination and context isolation in multi-agent systems |
+| `memory-systems` | Advanced state management and persistent memory architectures |
+| `tool-design` | Professional tool engineering (contracts, consolidation, primitives) |
+
+### Context Engineering
+
+| Skill | Description |
+|-------|-------------|
+| `context-fundamentals` | Core concepts of context window management |
+| `context-degradation` | Patterns for recognizing and mitigating context failures |
+| `context-optimization` | Strategies to maximize context efficiency |
+| `context-compression` | Techniques for reducing context while preserving information |
+| `filesystem-context` | Using filesystem as context interface |
+| `evaluation` | Systematic evaluation frameworks for agent systems |
+| `advanced-evaluation` | Rigorous evaluation for production-grade AI applications |
+| `project-development` | Design and build LLM projects from ideation through deployment |
+| `context-engineering-collection` | Root map for the context engineering skill collection |
 
 ### Development Tools
 
@@ -127,6 +153,13 @@ Core workflow commands use `workflow:` prefix to avoid collisions with built-in 
 | `every-style-editor` | Review copy for Every's style guide compliance |
 | `file-todos` | File-based todo tracking system |
 | `git-worktree` | Manage Git worktrees for parallel development |
+
+### React & Frontend
+
+| Skill | Description |
+|-------|-------------|
+| `react-best-practices` | Vercel's React/Next.js performance optimization (45+ rules) |
+| `web-design-guidelines` | Review UI code for Web Interface Guidelines compliance |
 
 ### Browser Automation
 
